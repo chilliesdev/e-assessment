@@ -32,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													<div class="icon">
 														<i class="fas fa-users"></i>
 													</div>
-													<a href="<?php echo base_url()?>/public/users/students" class="small-box-footer">
+													<a href="<?php echo base_url()?>public/users/students" class="small-box-footer">
 														More info <i class="fas fa-arrow-circle-right"></i>
 													</a>
 												</div>
@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													<div class="icon">
 														<i class="fas fa-user-tie"></i>
 													</div>
-													<a href="<?php echo base_url()?>/public/lecturers" class="small-box-footer">
+													<a href="<?php echo base_url()?>public/lecturers" class="small-box-footer">
 														More info <i class="fas fa-arrow-circle-right"></i>
 													</a>
 												</div>
@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													<div class="icon">
 														<i class="fas fa-university"></i>
 													</div>
-													<a href="<?php echo base_url()?>/public/assessment/question" class="small-box-footer">
+													<a href="<?php echo base_url()?>public/assessment/question" class="small-box-footer">
 														More info <i class="fas fa-arrow-circle-right"></i>
 													</a>
 												</div>
@@ -80,7 +80,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 													<div class="icon">
 														<i class="fas fa-check-square"></i>
 													</div>
-													<a href="<?= base_url()?>/public/evaluation/results" class="small-box-footer">
+													<a href="<?= base_url()?>public/evaluation/results" class="small-box-footer">
 														More info <i class="fas fa-arrow-circle-right"></i>
 													</a>
 												</div>
