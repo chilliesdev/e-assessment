@@ -6,10 +6,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-        <a href="index3.html" class="brand-link">
-            <img src="<?php echo base_url($dist_dir . '/img/AdminLTELogo.png'); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                        style="opacity: .8">
-            <span class="brand-text font-weight-light">AdminLTE 3</span>
+        <a href="<?= base_url() ?>" class="brand-link p-0 pt-2">
+            <div class="media m-0 p-0">
+                <img src="<?php echo base_url($dist_dir . '/img/ksu_logo.png'); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"style="opacity: .8">
+                <div class="media-body m-0 p-0">
+                    <h2 class="brand-text text-light text-sm text-uppercase">Kogi State University</h2><br>
+                    <div class="brand-text text-sm text-uppercase">Assessment Portal</div>
+                </div>
+            </div>
         </a>
 
         <!-- Sidebar -->
