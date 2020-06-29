@@ -1,5 +1,11 @@
 function baseUrl(){
-    var baseUrl = "http://localhost/assessment_app"
+    var baseUrl = ''
+    if (window.location.host === 'localhost') {
+        baseUrl = 'http://localhost/assessment_app'
+    } else {
+        baseUrl =  window.location.origin
+    }
+
     return baseUrl
 }
 
@@ -50,11 +56,6 @@ $(document).ready(function(){
         }
         
         postUrl = $(this).attr('action')
-        // postUrl = baseUrl()+'/test'
-
-        // for (var val of postData.values()){
-		// 	console.log(val)
-		// }
 
         $.ajax({
             type: 'POST',
@@ -103,7 +104,7 @@ $(document).ready(function(){
     $('#faculty').change(function (e) { 
         e.preventDefault();
         var facultyId = $(this).val()
-        $.getJSON("http://localhost/assessment_app/auth/get_department/" + facultyId,
+        $.getJSON( baseUrl() + "/auth/get_department/" + facultyId,
             function (data) {
                 var option = []
 
@@ -157,7 +158,7 @@ $(document).ready(function(){
                             var label = ''
                         }
 
-                        var assignmentSecondaryForm = '<form action="http://localhost/assessment_app/public/assessment/create' + '" class="formName" id="type">' +
+                        var assignmentSecondaryForm = '<form action="'+ baseUrl() + '/public/assessment/create' + '" class="formName" id="type">' +
                         '<div class= "form-group">' +
                             '<label>'+label+'</label><br>' +
                             '<input type="' + type + '" name="type_input" placeholder="" value="' + value + '" class="name form-control"/>' +  
@@ -208,7 +209,7 @@ $(document).ready(function(){
                     if (o.result == 1){
                         showLoadingOverlay()
                         toastr.success('Assessment has been created sucessfull')
-                        window.location.href = 'http://localhost/assessment_app/public/assessment/view/' + o.ast_id;
+                        window.location.href = baseUrl() + '/public/assessment/view/' + o.ast_id;
                     }else{
                         for(var key in o.error){
                             var value = o.error[key]
@@ -220,7 +221,7 @@ $(document).ready(function(){
         }
 
         evt.preventDefault();
-        $.getJSON("http://localhost/assessment_app/public/course_reg/get_course",
+        $.getJSON( baseUrl() + "/public/course_reg/get_course",
         function(o){
             hideLoadingOverlay()
             option = []
@@ -229,7 +230,7 @@ $(document).ready(function(){
                 var value = o.course[i];
                 option += '<option value="' + value.courseId + '" >' + value.courseCode + '</option>'
             }
-            var assignmentForm = '<form action="http://localhost/assessment_app/public/assessment/check_assessment"  class="formName" id="type_form">' +
+            var assignmentForm = '<form action="' + baseUrl() + '/public/assessment/check_assessment"  class="formName" id="type_form">' +
             '<div class= "form-group">' +
                 '<label>Assessment Name</label><br>' +
                 '<input type="text" name="assessment_name" placeholder="" class="name form-control" required />' +       
@@ -281,7 +282,7 @@ $(document).ready(function(){
 
     $('#new-assessment-label').hide()
 
-    $.getJSON("http://localhost/assessment_app/public/evaluation/index/1", null,
+    $.getJSON( baseUrl() + "/public/evaluation/index/1", null,
         function (o) {
             if(o.result){
                 $('#new-assessment-label').show()
@@ -303,7 +304,7 @@ function send_assessment(assessment_id) {
             confirm: function (){
                 var badgeId = '#assessment-badge-'+ assessment_id
                 var buttonClass = '.assessment-button-'+ assessment_id
-                var url = 'http://localhost/assessment_app/public/assessment/send/' + assessment_id;
+                var url = baseUrl() + '/public/assessment/send/' + assessment_id;
 
                 $(badgeId).attr('class','badge badge-info');
                 $(badgeId).text('Sending...');
@@ -333,8 +334,8 @@ function get_question(type,question_id,assessment_id = null){
     $('#question_go_back_btn').show()
     showLoadingOverlay()
 
-    var url = 'http://localhost/assessment_app/public/assessment/get_question/' + type + '/' + question_id
-    var url_update = 'http://localhost/assessment_app/public/assessment/update_question/' + type + '/' + question_id + '/' + assessment_id
+    var url = baseUrl() + '/public/assessment/get_question/' + type + '/' + question_id
+    var url_update = baseUrl() + '/public/assessment/update_question/' + type + '/' + question_id + '/' + assessment_id
     $('#form_question_add').attr('action',url_update)
     $('#add_question').text('Edit')
 
@@ -379,7 +380,7 @@ function send_message(user_id){
         title: 'Message',
         type: 'blue',
         content: '' +
-        '<form action="http://localhost/assessment_app/public/messaging/send/' + user_id + '" class="ajax_submit" id="message_form" method="post">' +
+        '<form action="' + baseUrl() + '/public/messaging/send/' + user_id + '" class="ajax_submit" id="message_form" method="post">' +
             '<div class="form-group">' +
                 '<label>Your Message</label>' +
                 '<textarea name="message" type="text" placeholder="Your Message" class="form-control" row="3" required />' +
@@ -399,7 +400,7 @@ function send_message(user_id){
                             hideLoadingOverlay()
                             if (o.result == 1){
                                 toastr.success('Message Sent!')
-                                window.location.href="http://localhost/assessment_app/public/messaging/open/" + user_id
+                                window.location.href= baseUrl() + "/public/messaging/open/" + user_id
                             }else{
                                 for(key in o.error){
                                     var val = o.error[key]
@@ -425,8 +426,8 @@ function get_question_ans(type,question_id,assessment_id){
 
     $('input[name="answer"]').prop('checked',false)
 
-    var url = 'http://localhost/assessment_app/public/evaluation/get_question/' + type + '/' + question_id + '/' + assessment_id
-    var url_submit = 'http://localhost/assessment_app/public/evaluation/answer/' + type + '/' + question_id + '/' + assessment_id
+    var url = baseUrl() + '/public/evaluation/get_question/' + type + '/' + question_id + '/' + assessment_id
+    var url_submit = baseUrl() + '/public/evaluation/answer/' + type + '/' + question_id + '/' + assessment_id
 
     $('#form_evaluation_submit').attr('action',url_submit)
 
@@ -487,11 +488,11 @@ function submit_answer(){
 
 function submit_final(assessment_id){
 
-    url = 'http://localhost/assessment_app/public/evaluation/submit/' + assessment_id
+    url = baseUrl() + '/public/evaluation/submit/' + assessment_id
 
     $.post(url, function(o){
         if(o.result == 1){
-            window.location.href = 'http://localhost/assessment_app/'
+            window.location.href = baseUrl()
         }
     },"json"
     )
@@ -519,8 +520,8 @@ function checkTime(i) {
 function get_mark_question(assessment_id,user_id,question_id){
     showLoadingOverlay()
 
-    var url = 'http://localhost/assessment_app/public/assessment/get_mark_question/' + assessment_id + '/' + user_id + '/' + question_id
-    var url_submit = 'http://localhost/assessment_app/public/assessment/submit_score/' + assessment_id + '/' + user_id + '/' + question_id
+    var url = baseUrl() + '/public/assessment/get_mark_question/' + assessment_id + '/' + user_id + '/' + question_id
+    var url_submit = baseUrl() + '/public/assessment/submit_score/' + assessment_id + '/' + user_id + '/' + question_id
 
     $('#form_evaluation_submit').attr('action',url_submit)
      
