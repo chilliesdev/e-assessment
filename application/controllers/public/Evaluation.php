@@ -262,6 +262,7 @@ class Evaluation extends Public_Controller
                 'answer_question_id' => $question_id,
                 'answer_log_id' => $answer_log[0]['answer_id'],
                 'answer_user_id' => $this->session->userdata('user_id'),
+                'answer_date_added' => date("Y-m-d H:i:s"),
             ]); 
         }elseif($answer != "" AND $value){
             // IF AN ANSWER IS INSERTED AND HAS INSERTED BY THE USER BEFORE UPDATE
@@ -274,6 +275,7 @@ class Evaluation extends Public_Controller
             [
                 // UPDATE VALUE
                 'answer' => $answer,
+                'answer_date_added' => date("Y-m-d H:i:s"),
             ]); 
         }
 
