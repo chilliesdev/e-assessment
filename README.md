@@ -1,3 +1,20 @@
+# Description 
+Developed with PHP, Codeigniter and Jquery this app is  designed to reduce cost of assessment (assignment, test and examination) in schools by providing a medium to set question, mark answers, conduct examination and compile results. 
+
+The app features messaging between teachers and students, setting of objective and essay questions, teachers and students course registration, easy marking system, result compilation and result checking.
+
+Technologies used are PHP, Codeigniter, Javascript, Jquery, AJAX, MySql, AdminLte
+
+# App access
+The following login can be used to access the app. Note all account password is "password" 
+
+
+admin@admin.com (Admin User) 
+
+kendan@gmail.com (Student User) 
+
+bami@gmail.com (Teacher User) 
+
 # CI-AdminLTE
 CodeIgniter 3.1.10 with AdminLTE 2.3.11
 
