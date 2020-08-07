@@ -15,6 +15,10 @@ kendan@gmail.com (Student User)
 
 bami@gmail.com (Teacher User) 
 
+## Demo
+
+http://e-assessment.herokuapp.com/auth/login
+
 # CI-AdminLTE
 CodeIgniter 3.1.10 with AdminLTE 2.3.11
 
@@ -35,21 +39,6 @@ $host_prod = 'your_domain.tld';
 4. Create a table named `ci_adminlte` and inject the data from the `install/sql/ci_adminlte.sql` file.
 5. Change if necessary the connection information to your database in the `application/config/database.php` file.
 
-## Demo
-
-https://demo.domprojects.com/ci-adminlte/auth/login
-
-### Login
- * Email : `admin@admin.com` / Password : `password`
-
-## Browser Compatibility
-Support for most major browsers including Chrome, Firefox, IE9+, Opera and Safari.
-
-## Languages
-  * English
-  * French
-  * Portuguese (translation by [marcelod](https://github.com/marcelod))
-  * ... and more soon
 
 ## Server Requirements
 
